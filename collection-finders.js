@@ -19,7 +19,7 @@ Mongo.Collection.prototype._nameField = "name";
 Mongo.Collection.prototype.findByName = function(name/*, options*/) {
   var self = this;
 
-  if (! name)
+  if (name === undefined)
     throw new Meteor.Error("invalid-parameters");
 
   var selector = {};
@@ -50,7 +50,7 @@ Mongo.Collection.prototype.findIdByName = function(name/*, options*/) {
   var self = this;
   var selector = {};
 
-  if (! name)
+  if (name === undefined)
     throw new Meteor.Error("invalid-parameters");
 
   selector[self._nameField] = name;
@@ -82,7 +82,7 @@ Mongo.Collection.prototype.findIdByName = function(name/*, options*/) {
 Mongo.Collection.prototype.findNameById = function(id/*, options*/) {
   var self = this;
 
-  if (! id)
+  if (id === undefined)
     throw new Meteor.Error("invalid-parameters");
 
   var argArray = _.toArray(arguments);
