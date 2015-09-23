@@ -11,11 +11,9 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.1');
+  api.versionsFrom('1.2.0.1');
 
-  api.imply('mongo');
-
-  api.use('mongo', ['client', 'server']);
+  api.use(['ecmascript', 'mongo'], ['client', 'server']);
 
   api.addFiles('collection-finders.js', ['client', 'server']);
 });

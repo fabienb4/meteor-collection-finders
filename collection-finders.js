@@ -17,18 +17,17 @@ Mongo.Collection.prototype._nameField = "name";
  * @returns {Object}
  */
 Mongo.Collection.prototype.findByName = function(name/*, options*/) {
-  var self = this;
-
-  if (name === undefined)
+  if (name === undefined) {
     throw new Meteor.Error("invalid-parameters");
+  }
 
-  var selector = {};
+  let selector = {};
 
-  selector[self._nameField] = name;
+  selector[this._nameField] = name;
 
-  var argArray = _.toArray(arguments);
+  let argArray = _.toArray(arguments);
 
-  return self._collection.findOne(selector, self._getFindOptions(argArray));
+  return this._collection.findOne(selector, this._getFindOptions(argArray));
 };
 
 
@@ -47,20 +46,20 @@ Mongo.Collection.prototype.findByName = function(name/*, options*/) {
  * @return {String}
  */
 Mongo.Collection.prototype.findIdByName = function(name/*, options*/) {
-  var self = this;
-  var selector = {};
+  let selector = {};
 
-  if (name === undefined)
+  if (name === undefined) {
     throw new Meteor.Error("invalid-parameters");
+  }
 
-  selector[self._nameField] = name;
+  selector[this._nameField] = name;
 
-  var argArray = _.toArray(arguments);
-  var options  = self._getFindOptions(argArray);
+  let argArray = _.toArray(arguments);
+  let options  = this._getFindOptions(argArray);
 
   options.fields = { _id: 1 };
 
-  var doc = self._collection.findOne(selector, options);
+  let doc = this._collection.findOne(selector, options);
 
   return doc && doc._id;
 };
@@ -80,18 +79,17 @@ Mongo.Collection.prototype.findIdByName = function(name/*, options*/) {
  * @return {String}
  */
 Mongo.Collection.prototype.findNameById = function(id/*, options*/) {
-  var self = this;
-
-  if (id === undefined)
+  if (id === undefined) {
     throw new Meteor.Error("invalid-parameters");
+  }
 
-  var argArray = _.toArray(arguments);
-  var options  = self._getFindOptions(argArray);
+  let argArray = _.toArray(arguments);
+  let options  = this._getFindOptions(argArray);
 
   options.fields = {};
-  options.fields[self._nameField] = 1;
+  options.fields[this._nameField] = 1;
 
-  var doc = self._collection.findOne(id, options);
+  let doc = this._collection.findOne(id, options);
 
-  return doc && doc[self._nameField];
+  return doc && doc[this._nameField];
 };
