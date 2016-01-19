@@ -1,5 +1,7 @@
 # fabienb4:collection-finders
 
+> **This package is no longer maintained.**
+
 A simple package to allow you to easily find documents within your collections using the `_id` or `name` field.
 
 ### Table of Contents
